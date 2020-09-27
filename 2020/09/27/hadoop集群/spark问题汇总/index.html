@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Exception in thread “main” org.apache.spark.SparkException: When running with master ‘yarn’ either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.123456$ vim &#x2F;etc&#x2F;profile#添加以下两句话expor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/spark%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Exception in thread “main” org.apache.spark.SparkException: When running with master ‘yarn’ either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.123456$ vim &#x2F;etc&#x2F;profile#添加以下两句话expor">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-27T01:21:41.965Z">
+<meta property="article:modified_time" content="2020-07-27T09:36:20.372Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hadoop集群/spark问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/spark%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="article-date">
+  <time datetime="2020-09-27T01:21:41.965Z" itemprop="datePublished">2020-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="Exception-in-thread-“main”-org-apache-spark-SparkException-When-running-with-master-‘yarn’-either-HADOOP-CONF-DIR-or-YARN-CONF-DIR-must-be-set-in-the-environment"><a href="#Exception-in-thread-“main”-org-apache-spark-SparkException-When-running-with-master-‘yarn’-either-HADOOP-CONF-DIR-or-YARN-CONF-DIR-must-be-set-in-the-environment" class="headerlink" title="Exception in thread “main” org.apache.spark.SparkException: When running with master ‘yarn’ either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment."></a>Exception in thread “main” org.apache.spark.SparkException: When running with master ‘yarn’ either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vim /etc/profile</span></span><br><span class="line"><span class="meta">#</span><span class="bash">添加以下两句话</span></span><br><span class="line">export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop</span><br><span class="line">export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop</span><br><span class="line"><span class="meta">$</span><span class="bash"> :wq</span></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h5 id="WARN-util-NativeCodeLoader-Unable-to-load-native-hadoop-library-for-your-platform…-using-builtin-java-classes-where-applicable-Exception-in-thread-“main”-java-lang-NoClassDefFoundError-org-apache-spark-sql-DataFrame"><a href="#WARN-util-NativeCodeLoader-Unable-to-load-native-hadoop-library-for-your-platform…-using-builtin-java-classes-where-applicable-Exception-in-thread-“main”-java-lang-NoClassDefFoundError-org-apache-spark-sql-DataFrame" class="headerlink" title="WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable  Exception in thread “main” java.lang.NoClassDefFoundError: org/apache/spark/sql/DataFrame"></a>WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable  Exception in thread “main” java.lang.NoClassDefFoundError: org/apache/spark/sql/DataFrame</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">缺少依赖包</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看Spark运行的日志"><a href="#查看Spark运行的日志" class="headerlink" title="查看Spark运行的日志"></a>查看Spark运行的日志</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">模式 Cluster :需要使用yarn logs 查看日志</span><br><span class="line">模式client 日志会输出到客户端上。</span><br><span class="line">user :dataCenter</span><br><span class="line">applicationId </span><br><span class="line">yarn logs -applicationId id &gt; logsxx.tex</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Spark-Could-not-find-CoarseGrainedScheduler-异常"><a href="#Spark-Could-not-find-CoarseGrainedScheduler-异常" class="headerlink" title="Spark: Could not find CoarseGrainedScheduler 异常"></a>Spark: Could not find CoarseGrainedScheduler 异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这个可能是一个资源问题，应该给任务分配更多的 cores 和Executors，并且分配更多的内存。并且需要给RDD分配更多的分区 </span><br><span class="line"></span><br><span class="line">找到spark下的conf配置文件中的spark-env.sh</span><br><span class="line"></span><br><span class="line">在内容末尾添加配置参数</span><br><span class="line"></span><br><span class="line">SPARK_WORKER_CORES&#x3D;2</span><br><span class="line">SPARK_WORKER_MEMORY&#x3D;2g</span><br></pre></td></tr></table></figure>
+
+<h4 id="org-apache-spark-SparkException-A-master-URL-must-be-set-in-your-configuration"><a href="#org-apache-spark-SparkException-A-master-URL-must-be-set-in-your-configuration" class="headerlink" title="org.apache.spark.SparkException: A master URL must be set in your configuration"></a>org.apache.spark.SparkException: A master URL must be set in your configuration</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">未知：</span><br><span class="line">可见这里的匿名内部类依赖类MethodPositionTest$的方法mapFun，所以会触发类MethodPositionTest$的加载以及静态代码块执行，触发报错；</span><br><span class="line"></span><br><span class="line">综上，不建议将spark的初始化代码放到main外，很容易出问题。</span><br><span class="line">问题2）当spark相关的初始化代码在main外时，为什么有时报错，有时不报错</span><br><span class="line">具体情形如下：</span><br><span class="line">1）如果main里边的transformation（示例中的map方法）不依赖外部函数调用，正常；</span><br><span class="line">2）如果main里边的transformation（示例中的map方法）依赖main里的函数，报错；</span><br><span class="line">3）如果main里边的transformation（示例中的map方法）依赖main外的函数，报错；</span><br><span class="line">解决：</span><br></pre></td></tr></table></figure>
+
+<h4 id="java-io-IOException-unexpected-exception-type"><a href="#java-io-IOException-unexpected-exception-type" class="headerlink" title="java.io.IOException: unexpected exception type"></a>java.io.IOException: unexpected exception type</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">WARN TaskSetManager:66 - Lost task 0.0 in stage 0.0 (TID 0, 172.17.190.98, executor 1): java.io.IOException: unexpected exception type</span><br><span class="line">at java.io.ObjectStreamClass.throwMiscException(ObjectStreamClass.java:1736)</span><br><span class="line">at java.io.ObjectStreamClass.invokeReadResolve(ObjectStreamClass.java:1266)</span><br><span class="line">at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2078)</span><br><span class="line">at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1573)</span><br><span class="line">at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2287)</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">集群上的Scala版本号和打包时工具上的Scala版本号不一致，修改idea上的Scala版本号和集群保持一致。</span><br><span class="line">修改步骤：</span><br><span class="line">1.从File中选择Project Structure</span><br><span class="line">2.选中GlobalLibraries,删除原有Scala，添加需要的Scala版本号，然后选中download</span><br><span class="line">3.重新打包即可</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>all 未能成功加入。</p>
+<h4 id="节点丢失问题"><a href="#节点丢失问题" class="headerlink" title="节点丢失问题"></a>节点丢失问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1、增加reload.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="hbase"><a href="#hbase" class="headerlink" title="hbase"></a>hbase</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> 16:05:39 ERROR executor.Executor: Exception in task 14.1 in stage 0.0 (TID 388)</span><br><span class="line">org.apache.spark.SparkException: Task failed while writing rows</span><br><span class="line">        at org.apache.spark.internal.io.SparkHadoopWriter$.org$apache$spark$internal$io$SparkHadoopWriter$$executeTask(SparkHadoopWriter.scala:155)</span><br><span class="line">        at org.apache.spark.internal.io.SparkHadoopWriter$$anonfun$3.apply(SparkHadoopWriter.scala:83)</span><br><span class="line">        at org.apache.spark.internal.io.SparkHadoopWriter$$anonfun$3.apply(SparkHadoopWriter.scala:78)</span><br><span class="line">        at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)</span><br><span class="line">        at org.apache.spark.scheduler.Task.run(Task.scala:121)</span><br><span class="line">        at org.apache.spark.executor.Executor$TaskRunner$$anonfun$11.apply(Executor.scala:407)</span><br><span class="line">        at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1408)</span><br><span class="line">        at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:413)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:748)</span><br><span class="line">Caused by: org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException: Failed 517 actions: org.apache.hadoop.hbase.RegionTooBusyException: Over memstore limit&#x3D;512.0M, regionName&#x3D;6b8012b0496b21b4e54293ac0facb0f0, server&#x3D;nm-cdh-storage-015.e.189.cn,16020,1584958999992</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.HRegion.checkResources(HRegion.java:4361)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:3980)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:3920)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doBatchOp(RSRpcServices.java:1034)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicBatchOp(RSRpcServices.java:966)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:929)</span><br><span class="line">        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2681)</span><br><span class="line">        at org.apache.hadoop.hbase.shaded.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:42014)</span><br><span class="line">        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:413)</span><br><span class="line">        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:130)</span><br><span class="line">        at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:324)</span><br><span class="line">        at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:304)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="本地跑spark项目"><a href="#本地跑spark项目" class="headerlink" title="本地跑spark项目"></a>本地跑spark项目</h4><h5 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Error: A JNI error has occurred, please check your installation and try again</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.SecurityException: Invalid signature file digest for Manifest main attributes</span><br><span class="line">        at sun.security.util.SignatureFileVerifier.processImpl(Unknown Source)</span><br><span class="line">        at sun.security.util.SignatureFileVerifier.process(Unknown Source)</span><br><span class="line">        at java.util.jar.JarVerifier.processEntry(Unknown Source)</span><br><span class="line">        at java.util.jar.JarVerifier.update(Unknown Source)</span><br><span class="line">        at java.util.jar.JarFile.initializeVerifier(Unknown Source)</span><br><span class="line">        at java.util.jar.JarFile.getInputStream(Unknown Source)</span><br><span class="line">        at sun.misc.JarIndex.getJarIndex(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath$JarLoader$1.run(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath$JarLoader$1.run(Unknown Source)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at sun.misc.URLClassPath$JarLoader.ensureOpen(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath$JarLoader.&lt;init&gt;(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath$3.run(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath$3.run(Unknown Source)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at sun.misc.URLClassPath.getLoader(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath.getLoader(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath.getNextLoader(Unknown Source)</span><br><span class="line">        at sun.misc.URLClassPath.getResource(Unknown Source)</span><br><span class="line">        at java.net.URLClassLoader$1.run(Unknown Source)</span><br><span class="line">        at java.net.URLClassLoader$1.run(Unknown Source)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at java.net.URLClassLoader.findClass(Unknown Source)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(Unknown Source)</span><br><span class="line">        at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(Unknown Source)</span><br><span class="line">        at sun.launcher.LauncherHelper.checkAndLoadMain(Unknown Source)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">解决办法：这是因为在使用Maven打包的时候导致某些包的重复引用，以至于打包之后的META-INF的目录下多出了一些*.SF,*.DSA,*.RSA文件所致，我们可以在pom文件里面加入以下配置：</span><br><span class="line">&lt;&lt;pom.xml&gt;&gt;</span><br><span class="line">  &lt;build&gt;</span><br><span class="line">  &lt;plugins&gt;</span><br><span class="line">  &lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-shade-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">      &lt;filters&gt;</span><br><span class="line">        &lt;filter&gt;</span><br><span class="line">          &lt;artifact&gt;*:*&lt;&#x2F;artifact&gt;</span><br><span class="line">          &lt;excludes&gt;</span><br><span class="line">            &lt;exclude&gt;META-INF&#x2F;*.SF&lt;&#x2F;exclude&gt;</span><br><span class="line">            &lt;exclude&gt;META-INF&#x2F;*.DSA&lt;&#x2F;exclude&gt;</span><br><span class="line">            &lt;exclude&gt;META-INF&#x2F;*.RSA&lt;&#x2F;exclude&gt;</span><br><span class="line">          &lt;&#x2F;excludes&gt;</span><br><span class="line">        &lt;&#x2F;filter&gt;</span><br><span class="line">      &lt;&#x2F;filters&gt;</span><br><span class="line">    &lt;&#x2F;configuration&gt;</span><br><span class="line">  &lt;&#x2F;plugin&gt;</span><br><span class="line">  &lt;&#x2F;plugins&gt;</span><br><span class="line">  &lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">重新打包：</span><br><span class="line">D盘下的tools_0808文件夹为例，打包的文件夹中必须存在MANIFEST.MF文件，存放的位置是</span><br><span class="line"></span><br><span class="line">D:\tools_0808\META-INF\MANIFEST.MF。</span><br><span class="line"></span><br><span class="line">dos命令如下：</span><br><span class="line"></span><br><span class="line">jar cvfm sparkP.jar sparkProject\META-INF\MANIFEST.MF -C sparkProject&#x2F; . </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、这个是什么需求</span><br><span class="line">2、原定在不同步数据到大数据集群，你的方案、问题、工作量是多少</span><br><span class="line">3、建议把数据同步到集群，工作量、成本是多少</span><br><span class="line"></span><br><span class="line">jar cvfm sparkP.jar sparkProject\META-INF\MANIFEST.MF -C sparkProject&#x2F; . </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="本地运行spark，创建视图失败。"><a href="#本地运行spark，创建视图失败。" class="headerlink" title="本地运行spark，创建视图失败。"></a>本地运行spark，创建视图失败。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">异常：需要替换sparkmaster的&#x2F;bin &#x2F;hadoop.dll  跟wistre.exe 文件</span><br><span class="line">且放置 到系统的System32目录下。</span><br></pre></td></tr></table></figure>
+
+<h4 id="spark查询hdfs文件是否存在"><a href="#spark查询hdfs文件是否存在" class="headerlink" title="spark查询hdfs文件是否存在"></a>spark查询hdfs文件是否存在</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; sc 为sparkContext;</span><br><span class="line">val config &#x3D; sc.hadoopConfiguration</span><br><span class="line">       val fs &#x3D; org.apache.hadoop.fs.FileSystem.get(config)</span><br><span class="line">       val path &#x3D; s&quot;&#x2F;year&#x3D;$&#123;year&#125;&#x2F;month&#x3D;$&#123;month&#125;&#x2F;day&#x3D;$&#123;day&#125;&quot;</span><br><span class="line">       val exists &#x3D; fs.exists(new org.apache.hadoop.fs.Path(ConfigParam.HiveZhczHistory + path))</span><br></pre></td></tr></table></figure>
+
+<h4 id="shell判断HFDS文件是否存在"><a href="#shell判断HFDS文件是否存在" class="headerlink" title="shell判断HFDS文件是否存在"></a>shell判断HFDS文件是否存在</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -test -e &#x2F;hdfs_dir</span><br><span class="line">if [$? -ne 0];then</span><br><span class="line">	echo &quot;Directory not exists!&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">管理平台</span><br><span class="line">接口调用</span><br><span class="line"></span><br><span class="line">每个集群各有两个。接口大概在十几个。</span><br><span class="line">目前：管理平台有一个，新内蒙。</span><br><span class="line">沙溪没有管理平台  ，管理平台在沙溪上也有。</span><br><span class="line"></span><br><span class="line">策略， 跟管理平台 要交互， 新增api ，要如果更新 redis.</span><br><span class="line">放内存。 提供一个接口， 写到后台服务器的内存里面。 我可以写到个文件里。</span><br><span class="line">内存的数据。 </span><br><span class="line"></span><br><span class="line">权限控制。 参数 层面。  </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/spark%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" data-id="ckfkf711y00074ciu90bjah0x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/27/dataFrame%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/kafka%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/27/dataFrame%E7%9A%84%E4%BD%BF%E7%94%A8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/spark%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/kafka%E6%90%AD%E5%BB%BA/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/hbase%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/27/hadoop%E9%9B%86%E7%BE%A4/hbase-java-api/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
